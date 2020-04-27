@@ -112,4 +112,7 @@ dependencies {
     //Liquid Swipe
     implementation "com.github.Chrisvin:LiquidSwipe:$rootProject.liquid_swipe"
 
+    //NumberPicker
+    implementation "com.github.travijuu:numberpicker:$rootProject.number_picker"
+
 }

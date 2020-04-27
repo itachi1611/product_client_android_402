@@ -8,16 +8,32 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import com.foxy.product_client.R;
+import com.foxy.product_client.adapters.ProductAdapter;
 import com.foxy.product_client.bases.BaseFragment;
+import com.foxy.product_client.models.Product;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 import static com.foxy.product_client.ultis.Constants.ARG_BG_COLOR;
 
 public class HomeFragment extends BaseFragment implements HomeContract.View {
+
+    @BindView(R.id.rvList)
+    RecyclerView rvList;
+
+    private List<Product> mList;
 
     private int bgColorResId = R.color.blue_grey_inactive;
 
@@ -65,12 +81,44 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     private void initView(View view) {
         unbinder = ButterKnife.bind(this, view);
+        mList = new ArrayList<>();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        onShowLoading();
+        mPresenter.onFetchProductData();
+    }
+
+    private void initRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        rvList.setItemAnimator(new DefaultItemAnimator());
+        rvList.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        rvList.setHasFixedSize(true);
+        rvList.setLayoutManager(layoutManager);
+        ProductAdapter adapter = new ProductAdapter(mList);
+        rvList.setAdapter(adapter);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onFetchSuccess(List<Product> products) {
+        if(products != null) {
+            mList.addAll(products);
+        }
+        onHideLoading();
+        initRecyclerView();
+    }
+
+    @Override
+    public void onFetchError() {
+
     }
 
 }

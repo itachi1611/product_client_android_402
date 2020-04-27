@@ -13,7 +13,7 @@ public interface MasterDataService {
      * Method: GET
      * Get product list data
     */
-    @GET("/api/product")
+    @GET("api/product")
     Observable<List<Product>> fetchProduct();
 
 

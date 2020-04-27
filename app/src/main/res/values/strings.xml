@@ -10,7 +10,7 @@
 
     <!--Progress Dialog-->
     <string name="progress_dialog_title">Waiting...</string>
-    <string name="progress_dialog_message">Loading image from network !</string>
+    <string name="progress_dialog_message">Loading product from network !</string>
 
     <!--AboutFragment-->
     <string name="copy_right">Copyrights © %1$d</string>
