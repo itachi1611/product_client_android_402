@@ -20,5 +20,16 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="cart">Cart</string>
+    <string name="about">About</string>
+
+    <!--ProfileFragment-->
+    <string name="tv_name">Admin</string>
+    <string name="tv_email">admin@mail.com</string>
+    <string name="tv_phone">0000000000</string>
+    <string name="tv_password">*********</string>
+    <string name="tv_role">Admin</string>
+    <string name="btnSave">Save</string>
+    <string name="btnCancel" />
+
 
 </resources>
