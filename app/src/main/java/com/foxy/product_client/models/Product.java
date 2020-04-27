@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Product {
 
+
     @SerializedName("_id")
     @Expose
     private String id;
@@ -23,6 +24,12 @@ public class Product {
     @SerializedName("image")
     @Expose
     private String image;
+    @SerializedName("local_image")
+    @Expose
+    private String localImage;
+    @SerializedName("buffer_image")
+    @Expose
+    private BufferImage bufferImage;
 
     public String getId() {
         return id;
@@ -71,5 +78,22 @@ public class Product {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public String getLocalImage() {
+        return localImage;
+    }
+
+    public void setLocalImage(String localImage) {
+        this.localImage = localImage;
+    }
+
+    public BufferImage getBufferImage() {
+        return bufferImage;
+    }
+
+    public void setBufferImage(BufferImage bufferImage) {
+        this.bufferImage = bufferImage;
+    }
+
 
 }

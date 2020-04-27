@@ -1,5 +1,6 @@
 package com.foxy.product_client.holders;
 
+import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -13,7 +14,10 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textview.MaterialTextView;
 import com.travijuu.numberpicker.library.NumberPicker;
 
+import java.nio.Buffer;
 import java.text.NumberFormat;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -54,7 +58,20 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         tvName.setText(product.getName());
         tvPrice.setText(NumberFormat.getCurrencyInstance(Locale.JAPANESE).format(product.getPrice()).trim());
         tvDescription.setText(product.getDescription());
-        //ivProduct.setImageResource(product.getImage());
+
+        if(product.getBufferImage() != null) {
+            //Convert List<Integer> to Byte Array
+            List<Integer> list = product.getBufferImage().getData();
+            byte[] bytes = new byte[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                bytes[i] = (byte) list.get(i).intValue();
+            }
+
+            ivProduct.setImageBitmap(BitmapFactory.decodeByteArray(bytes,0,bytes.length));
+        } else {
+            ivProduct.setImageResource(R.drawable.ic_no_image);
+        }
+
         btnCart.setOnClickListener(v -> {
             Snackbar.make(itemView, "Added", Snackbar.LENGTH_LONG).show();
 
