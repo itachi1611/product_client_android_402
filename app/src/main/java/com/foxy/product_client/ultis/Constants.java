@@ -4,6 +4,8 @@ public class Constants {
 
     public static final int SPLASH_TIME_OUT  = 1500;
 
+    public static final int REGISTER_TIME_OUT  = 2000;
+
     //Database and Preference
     public static final String PREF_NAME = "product_client_prefs";
 

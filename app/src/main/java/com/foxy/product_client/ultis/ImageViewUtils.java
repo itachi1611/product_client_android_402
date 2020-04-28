@@ -55,7 +55,7 @@ public class ImageViewUtils {
         }
     }
 
-    public static void loadImage(Context context, ImageView imageView, String sourceImage, Priority priority) {
+    public static void loadImage(Context context, ImageView imageView, int sourceImage, Priority priority) {
         int defaultResourceImageAvatar = R.drawable.ic_no_image;
         RequestOptions options = new RequestOptions();
         options.placeholder(defaultResourceImageAvatar);
