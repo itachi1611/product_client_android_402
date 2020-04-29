@@ -40,7 +40,7 @@
             android:inputType="text"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_name"/>
+            android:hint="@string/tv_name"/>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtEmail"
@@ -51,7 +51,7 @@
             android:inputType="textEmailAddress"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_email"/>
+            android:hint="@string/tv_email"/>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtPhone"
@@ -62,18 +62,18 @@
             android:padding="8dp"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_phone"/>
+            android:hint="@string/tv_phone"/>
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtPassword"
+            android:id="@+id/edtAddress"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="8dp"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_password"/>
+            android:hint="@string/tv_address"/>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtRole"
@@ -85,7 +85,7 @@
             android:clickable="false"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_role"/>
+            android:hint="@string/tv_role"/>
 
     </LinearLayout>
 

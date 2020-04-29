@@ -21,7 +21,6 @@ public interface MasterDataService {
     @GET("api/product")
     Observable<List<Product>> fetchProduct();
 
-
     /**
      * Method: POST
      * Login
@@ -38,5 +37,19 @@ public interface MasterDataService {
     @FormUrlEncoded
     Observable<ResponseBody> onRegister(@Field("email") String e, @Field("password") String p);
 
+    /**
+     * Method: POST
+     * Create order
+     */
+    @POST("api/order/add")
+    @FormUrlEncoded
+    Observable<ResponseBody> onCreateOrder(
+            @Field("customer_name") String customer_name,
+            @Field("customer_id") String customer_id,
+            @Field("shipping_address") String shipping_address,
+            @Field("payment_method") String payment_method,
+            @Field("payment_status") int payment_status,
+            @Field("product_name") String product_name,
+            @Field("product_quantity") int product_quantity);
 
 }

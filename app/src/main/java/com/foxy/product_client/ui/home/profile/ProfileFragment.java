@@ -40,8 +40,8 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
     @BindView(R.id.edtPhone)
     AppCompatEditText edtPhone;
 
-    @BindView(R.id.edtPassword)
-    AppCompatEditText edtPassword;
+    @BindView(R.id.edtAddress)
+    AppCompatEditText edtAddress;
 
     @BindView(R.id.edtRole)
     AppCompatEditText edtRole;
@@ -110,7 +110,7 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
         String name = pref.getDataFromPref("u_name", "");
         String email = pref.getDataFromPref("u_email", "");
         String phone = pref.getDataFromPref("u_phone", "");
-        String password = pref.getDataFromPref("u_password", "");
+        String address = pref.getDataFromPref("u_address", "Hanoi");
         boolean role = pref.getDataFromPref("u_role", false);
 
         if(!role) {
@@ -124,7 +124,7 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
         tvName.setText(name);
         edtEmail.setText(email);
         edtPhone.setText(phone);
-        edtPassword.setText(password);
+        edtAddress.setText(address);
 
         btnSave.setOnClickListener(v -> {
 

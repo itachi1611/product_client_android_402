@@ -1,5 +1,6 @@
 package com.foxy.product_client.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -46,4 +47,5 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     public int getItemCount() {
         return (mProducts != null) ? mProducts.size() :0;
     }
+
 }

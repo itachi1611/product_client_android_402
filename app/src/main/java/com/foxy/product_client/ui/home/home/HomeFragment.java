@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
 
 import com.foxy.product_client.R;
 import com.foxy.product_client.adapters.ProductAdapter;
@@ -111,14 +110,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     public void onFetchSuccess(List<Product> products) {
         if(products != null) {
             mList.addAll(products);
+            onHideLoading();
+            initRecyclerView();
         }
-        onHideLoading();
-        initRecyclerView();
     }
 
     @Override
     public void onFetchError() {
-
+        onHideLoading();
     }
 
 }

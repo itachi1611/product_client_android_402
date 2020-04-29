@@ -28,6 +28,9 @@ public class User {
     @SerializedName("phone")
     @Expose
     private String phone;
+    @SerializedName("address")
+    @Expose
+    private String address;
     @SerializedName("tokens")
     @Expose
     private List<Object> tokens = null;
@@ -67,12 +70,12 @@ public class User {
         this.password = password;
     }
 
-    public Boolean getIsAdmin() {
+    public Boolean getAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(Boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 
     public String getName() {
@@ -89,6 +92,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public List<Object> getTokens() {

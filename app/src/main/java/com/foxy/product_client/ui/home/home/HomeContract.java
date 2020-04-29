@@ -9,10 +9,14 @@ public interface HomeContract {
     interface View {
         void onFetchSuccess(List<Product> products);
         void onFetchError();
+
+        void onCreateSuccess();
+        void onCreateError();
     }
 
     interface Presenter {
         void onFetchProductData();
+        void onCreateOrder();
     }
 
 }

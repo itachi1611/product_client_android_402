@@ -38,6 +38,8 @@
     <string name="tv_register"><![CDATA[Create an account >]]></string>
     <string name="btn_register">Register</string>
     <string name="tv_login"><![CDATA[Already have an account >]]></string>
+    <string name="tv_address">Hanoi</string>
+    <string name="btn_order">Order</string>
 
 
 </resources>
