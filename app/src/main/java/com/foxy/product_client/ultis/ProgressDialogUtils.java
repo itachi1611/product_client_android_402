@@ -13,7 +13,7 @@ public class ProgressDialogUtils {
 
     public static ProgressDialog showLoadingDialog(Context context) {
         ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.setTitle(context.getResources().getString(R.string.progress_dialog_title));
+        //progressDialog.setTitle(context.getResources().getString(R.string.progress_dialog_title));
         progressDialog.setMessage(context.getResources().getString(R.string.progress_dialog_message));
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         if(progressDialog.getWindow() != null) {

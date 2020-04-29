@@ -37,6 +37,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="8dp"
+            android:inputType="text"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
             android:text="@string/tv_name"/>
@@ -47,6 +48,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="8dp"
+            android:inputType="textEmailAddress"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
             android:text="@string/tv_email"/>
@@ -56,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:inputType="number"
             android:padding="8dp"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
@@ -67,6 +70,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="8dp"
+            android:inputType="textPassword"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
             android:text="@string/tv_password"/>
@@ -91,12 +95,23 @@
         android:layout_weight="1.5"
         android:gravity="center"
         android:padding="16dp"
+        android:weightSum="3"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/btnSave"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnLogout"
+            android:layout_marginLeft="4dp"
             android:layout_weight="1"/>
 
     </LinearLayout>

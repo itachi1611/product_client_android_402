@@ -5,6 +5,8 @@ import android.os.Handler;
 
 import com.foxy.product_client.R;
 import com.foxy.product_client.bases.BaseActivity;
+import com.foxy.product_client.helpers.SharedPreferencesHelper;
+import com.foxy.product_client.ui.authentication.LoginActivity;
 import com.foxy.product_client.ui.home.HomeActivity;
 
 import static com.foxy.product_client.ultis.Constants.SPLASH_TIME_OUT;
@@ -23,8 +25,13 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
 
     private void onNavigateTime() {
         new Handler().postDelayed(() -> {
-            navigateActivity(HomeActivity.class);
-            finish();
+            if(SharedPreferencesHelper.getInstance(this).getDataFromPref("isLogin", false)) {
+                navigateActivity(LoginActivity.class);
+                finish();
+            } else {
+                navigateActivity(HomeActivity.class);
+                finish();
+            }
         },SPLASH_TIME_OUT);
     }
 

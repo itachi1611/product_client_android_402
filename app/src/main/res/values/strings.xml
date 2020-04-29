@@ -10,7 +10,7 @@
 
     <!--Progress Dialog-->
     <string name="progress_dialog_title">Waiting...</string>
-    <string name="progress_dialog_message">Loading product from network !</string>
+    <string name="progress_dialog_message">Loading...</string>
 
     <!--AboutFragment-->
     <string name="copy_right">Copyrights © %1$d</string>
@@ -29,7 +29,15 @@
     <string name="tv_password">*********</string>
     <string name="tv_role">Admin</string>
     <string name="btnSave">Save</string>
-    <string name="btnCancel" />
+    <string name="btnLogout">Log out</string>
+
+    <!--Authentication-->
+    <string name="edt_email_hint">Please input your email !</string>
+    <string name="edt_password_hint">Please input your password !</string>
+    <string name="btn_login">Login</string>
+    <string name="tv_register"><![CDATA[Create an account >]]></string>
+    <string name="btn_register">Register</string>
+    <string name="tv_login"><![CDATA[Already have an account >]]></string>
 
 
 </resources>
