@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp"
+        app:cardMaxElevation="12dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="10"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:padding="4dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ivProduct"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_no_image"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvName"
+                    android:padding="8dp"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:textStyle="italic|bold"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvPrice"
+                    android:textSize="12sp"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#5d5d5d"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDescription"
+                    android:textSize="12sp"
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#5d5d5d"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:textStyle="bold" />
+
+                <com.faraaf.tictacdev.valueselector.ValueSelector
+                    android:id="@+id/vsQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:borderColor="#5C96CE"
+                    app:borderRadius="10"
+                    app:borderThickness="2"
+                    app:gapValue="1"
+                    app:invertIconsPlace="False"
+                    app:maxValue="99"
+                    app:minValue="0"
+                    app:minusBtnColor="#1E88E5"
+                    app:minusIconHeightSize="20dp"
+                    app:minusIconWidthSize="20dp"
+                    app:plusBtnColor="#D81B60"
+                    app:plusIconHeightSize="20dp"
+                    app:plusIconWidthSize="20dp"
+                    app:startValue="1"
+                    app:updateInterval="100"
+                    app:valueColor="#FB8C00"
+                    app:valueSelectorOrientation="horizontal"
+                    app:valueTextSize="8sp"
+                    app:valueSelectorFontFamily="monospace"
+                    app:customFontFamily="rubik.ttf"
+                    app:iconTypes="plus_minus"
+                    app:actionDownColor="#0CAA0C"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"/>
+
+            </LinearLayout>
+<!--Change iconTypes to plus_minus, arrow, expand, circle-->
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textAllCaps="true"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="@string/btn_order"/>
+
+</LinearLayout>

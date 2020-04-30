@@ -1,6 +1,7 @@
 package com.foxy.product_client.ui.home.home;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.foxy.product_client.R;
 import com.foxy.product_client.adapters.ProductAdapter;
 import com.foxy.product_client.bases.BaseFragment;
 import com.foxy.product_client.models.Product;
+import com.foxy.product_client.ui.home.bottom_fragment.AddOrderBottomDialogFragment;
+import com.foxy.product_client.ultis.RecyclerViewUtils.RecyclerViewClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
 
     @BindView(R.id.rvList)
     RecyclerView rvList;
+
+    @BindView(R.id.swipeContainer)
+    SwipeRefreshLayout swipeContainer;
 
     private List<Product> mList;
 
@@ -77,6 +83,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
+
+        //Handle swipe action to refresh data
+        onSwipeRefreshData();
     }
 
     private void initView(View view) {
@@ -91,13 +100,44 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
         mPresenter.onFetchProductData();
     }
 
+    private void onSwipeRefreshData() {
+        swipeContainer.setOnRefreshListener(() -> {
+            onShowLoading();
+            mPresenter.onFetchProductData();
+            handleSwipeRefreshAction();
+        });
+    }
+
+    private void handleSwipeRefreshAction() {
+        new Handler().postDelayed(() -> {
+            swipeContainer.setRefreshing(false);
+        }, 150);
+    }
+
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         rvList.setItemAnimator(new DefaultItemAnimator());
         rvList.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
         rvList.setHasFixedSize(true);
         rvList.setLayoutManager(layoutManager);
-        ProductAdapter adapter = new ProductAdapter(mList);
+
+        RecyclerViewClickListener listener = new RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int pos) {
+                Bundle arg = new Bundle();
+                arg.putSerializable("p_obj", mList.get(pos));
+                AddOrderBottomDialogFragment fragment = AddOrderBottomDialogFragment.newInstance();
+                fragment.setArguments(arg);
+                fragment.show(getChildFragmentManager(), "Order");
+            }
+
+            @Override
+            public void onLongClick(View view, int pos) {
+
+            }
+        };
+
+        ProductAdapter adapter = new ProductAdapter(mList, listener);
         rvList.setAdapter(adapter);
     }
 
@@ -110,15 +150,16 @@ public class HomeFragment extends BaseFragment implements HomeContract.View {
     @Override
     public void onFetchSuccess(List<Product> products) {
         if(products != null) {
+            mList.clear();
             mList.addAll(products);
+            onHideLoading();
+            initRecyclerView();
         }
-        onHideLoading();
-        initRecyclerView();
     }
 
     @Override
     public void onFetchError() {
-
+        onHideLoading();
     }
 
 }

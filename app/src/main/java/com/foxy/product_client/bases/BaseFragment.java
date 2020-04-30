@@ -29,8 +29,6 @@ public class BaseFragment extends Fragment {
         disposable.dispose();
     }
 
-
-
     /**
      * Load fragment to container
      *

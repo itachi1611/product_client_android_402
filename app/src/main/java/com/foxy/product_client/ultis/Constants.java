@@ -1,5 +1,4 @@
 package com.foxy.product_client.ultis;
-
 public class Constants {
 
     public static final int SPLASH_TIME_OUT  = 1500;

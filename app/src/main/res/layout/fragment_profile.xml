@@ -31,29 +31,33 @@
         android:padding="16dp"
         android:gravity="center">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/tvName"
+        <EditText
+            android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="8dp"
-            android:inputType="text"
-            android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_name"/>
+            android:focusable="true"
+            android:clickable="true"
+            android:hint="@string/tv_name"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColor="@color/blue_inactive" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <EditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="8dp"
+            android:focusable="false"
+            android:clickable="false"
             android:inputType="textEmailAddress"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_email"/>
+            android:hint="@string/tv_email"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <EditText
             android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -62,30 +66,30 @@
             android:padding="8dp"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_phone"/>
+            android:hint="@string/tv_phone"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtPassword"
+        <EditText
+            android:id="@+id/edtAddress"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:padding="8dp"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_password"/>
+            android:hint="@string/tv_address"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <EditText
             android:id="@+id/edtRole"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:padding="8dp"
             android:focusable="false"
             android:clickable="false"
+            android:padding="8dp"
             android:textColor="@color/blue_inactive"
             android:gravity="center_vertical"
-            android:text="@string/tv_role"/>
+            android:hint="@string/tv_role"/>
 
     </LinearLayout>
 
@@ -98,18 +102,22 @@
         android:weightSum="3"
         android:orientation="horizontal">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnSave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:focusable="true"
+            android:clickable="true"
             android:text="@string/btnSave"
             android:layout_marginRight="4dp"
             android:layout_weight="1"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnLogout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:focusable="true"
+            android:clickable="true"
             android:text="@string/btnLogout"
             android:layout_marginLeft="4dp"
             android:layout_weight="1"/>

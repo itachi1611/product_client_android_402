@@ -83,8 +83,9 @@ public class LoginActivity extends BaseActivity implements AuthenticationContrac
             pref.saveDataToPref("u_email", user.getEmail());
             pref.saveDataToPref("u_name", user.getName());
             pref.saveDataToPref("u_phone", user.getPhone());
-            pref.saveDataToPref("u_password", user.getPassword());
-            pref.saveDataToPref("u_role", user.getIsAdmin());
+            pref.saveDataToPref("u_address", user.getAddress());
+            pref.saveDataToPref("u_role", user.getAdmin());
+            pref.saveDataToPref("u_id", user.getId());
             pref.saveDataToPref("isLogin", true);
         }
         onHideLoading();

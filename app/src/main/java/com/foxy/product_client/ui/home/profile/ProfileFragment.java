@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Priority;
@@ -16,13 +17,14 @@ import com.foxy.product_client.R;
 import com.foxy.product_client.bases.BaseFragment;
 import com.foxy.product_client.helpers.SharedPreferencesHelper;
 import com.foxy.product_client.ui.authentication.LoginActivity;
+import com.foxy.product_client.ultis.CommonUtils;
 import com.foxy.product_client.ultis.ImageViewUtils;
-import com.google.android.material.button.MaterialButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.ResponseBody;
 
 import static com.foxy.product_client.ultis.Constants.ARG_BG_COLOR;
 
@@ -31,26 +33,26 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
     @BindView(R.id.profile_image)
     CircleImageView profileImage;
 
-    @BindView(R.id.tvName)
-    AppCompatEditText tvName;
+    @BindView(R.id.edtName)
+    EditText edtName;
 
     @BindView(R.id.edtEmail)
-    AppCompatEditText edtEmail;
+    EditText edtEmail;
 
     @BindView(R.id.edtPhone)
-    AppCompatEditText edtPhone;
+    EditText edtPhone;
 
-    @BindView(R.id.edtPassword)
-    AppCompatEditText edtPassword;
+    @BindView(R.id.edtAddress)
+    EditText edtAddress;
 
     @BindView(R.id.edtRole)
-    AppCompatEditText edtRole;
+    EditText edtRole;
 
     @BindView(R.id.btnSave)
-    MaterialButton btnSave;
+    Button btnSave;
 
     @BindView(R.id.btnLogout)
-    MaterialButton btnLogout;
+    Button btnLogout;
 
 
     private int bgColorResId = R.color.blue_grey_inactive;
@@ -107,10 +109,11 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
     }
 
     private void initData() {
+        String _id = pref.getDataFromPref("u_id", "");
         String name = pref.getDataFromPref("u_name", "");
         String email = pref.getDataFromPref("u_email", "");
         String phone = pref.getDataFromPref("u_phone", "");
-        String password = pref.getDataFromPref("u_password", "");
+        String address = pref.getDataFromPref("u_address", "Hanoi");
         boolean role = pref.getDataFromPref("u_role", false);
 
         if(!role) {
@@ -121,19 +124,25 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
             ImageViewUtils.loadImage(getContext(), profileImage, R.drawable.ic_admin, Priority.NORMAL);
         }
 
-        tvName.setText(name);
-        edtEmail.setText(email);
-        edtPhone.setText(phone);
-        edtPassword.setText(password);
+        edtName.setHint(name);
+        edtEmail.setHint(email);
+        edtPhone.setHint(phone);
+        edtAddress.setHint(address);
 
         btnSave.setOnClickListener(v -> {
-
+            onShowLoading();
+            mPresenter.onEditUser(
+                    _id,
+                    edtName.getText().toString().trim(),
+                    edtPhone.getText().toString().trim(),
+                    edtAddress.getText().toString().trim()
+            );
         });
 
         btnLogout.setOnClickListener(v -> {
             pref.saveDataToPref("isLogin", false);
             Intent intent = new Intent(getActivity(), LoginActivity.class);
-            getActivity().startActivity(intent);
+            getContext().startActivity(intent);
             getActivity().finish();
         });
 
@@ -143,6 +152,18 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onEditUserSuccess(ResponseBody responseBody) {
+        onHideLoading();
+        CommonUtils.showSuccessToast(getContext(), "Update user succeeded !");
+    }
+
+    @Override
+    public void onEditUserError() {
+        onHideLoading();
+        CommonUtils.showErrorToast(getContext(), "Update user failed !");
     }
 
 }
