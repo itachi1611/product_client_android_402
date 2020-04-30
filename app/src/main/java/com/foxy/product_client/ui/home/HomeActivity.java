@@ -23,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class HomeActivity extends BaseActivity implements HomeContract.View { //TODO: DON'T FORGET TO ADD THIS ACTIVITY TO THE MANIFEST FILE!!!
+public class HomeActivity extends BaseActivity { //TODO: DON'T FORGET TO ADD THIS ACTIVITY TO THE MANIFEST FILE!!!
 
     @BindView(R.id.view_pager)
     LiquidSwipeViewPager viewPager;
@@ -33,9 +33,7 @@ public class HomeActivity extends BaseActivity implements HomeContract.View { //
 
     private Unbinder unbinder;
 
-    private List<Fragment> fragmentList;
-
-    private HomeContract.Presenter mPresenter = new HomePresenter(this);    // Presenter
+    //private List<Fragment> fragmentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +49,20 @@ public class HomeActivity extends BaseActivity implements HomeContract.View { //
 
     private void initView() {
         unbinder = ButterKnife.bind(this);
-        fragmentList = new ArrayList<>();
-        fragmentList.add(HomeFragment.newInstance( R.color.red_inactive));
-        fragmentList.add(CartFragment.newInstance( R.color.blue_inactive));
-        fragmentList.add(ProfileFragment.newInstance( R.color.white));
-        fragmentList.add(AboutFragment.newInstance( R.color.green_inactive));
+        //fragmentList = new ArrayList<>();
+        //fragmentList.add(HomeFragment.newInstance( R.color.red_inactive));
+        //fragmentList.add(CartFragment.newInstance( R.color.blue_inactive));
+        //fragmentList.add(ProfileFragment.newInstance( R.color.white));
+        //fragmentList.add(AboutFragment.newInstance( R.color.green_inactive));
     }
 
     private void initSlidePager() {
-        SlidePagerAdapter adapter = new SlidePagerAdapter(getSupportFragmentManager(), fragmentList);
+        SlidePagerAdapter adapter = new SlidePagerAdapter(getSupportFragmentManager());
         bottomNavigationViewLinear.setTypeface(Typeface.createFromAsset(getAssets(), "rubik.ttf"));
-        bottomNavigationViewLinear.setBadgeValue(0, "40");
-        bottomNavigationViewLinear.setBadgeValue(1, null); //invisible badge
-        bottomNavigationViewLinear.setBadgeValue(2, "7");//empty badge
-        bottomNavigationViewLinear.setBadgeValue(3, "");//empty badge
+        //bottomNavigationViewLinear.setBadgeValue(0, "40");
+        //bottomNavigationViewLinear.setBadgeValue(1, null); //invisible badge
+        //bottomNavigationViewLinear.setBadgeValue(2, "7");//empty badge
+        //bottomNavigationViewLinear.setBadgeValue(3, "");//empty badge
 
         viewPager.setAdapter(adapter);
 
@@ -77,6 +75,22 @@ public class HomeActivity extends BaseActivity implements HomeContract.View { //
             @Override
             public void onPageSelected(int position) {
                 bottomNavigationViewLinear.setCurrentActiveItem(position);
+                switch (position) {
+                    case 0:
+                        bottomNavigationViewLinear.setBadgeValue(0, "40");
+                        break;
+                    case 1:
+                        bottomNavigationViewLinear.setBadgeValue(1, null); //invisible badge
+                        break;
+                    case 2:
+                        bottomNavigationViewLinear.setBadgeValue(2, "7");//empty badge
+                        break;
+                    case 3:
+                        bottomNavigationViewLinear.setBadgeValue(3, "");//empty badge
+                        break;
+                    default:
+                        break;
+                }
             }
 
             @Override

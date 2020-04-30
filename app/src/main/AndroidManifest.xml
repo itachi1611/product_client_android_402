@@ -15,24 +15,26 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:usesCleartextTraffic="true"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
+        tools:replace="android:supportsRtl"
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.home.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateVisible"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.authentication.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:windowSoftInputMode="adjustResize|stateVisible"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.authentication.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:windowSoftInputMode="adjustResize|stateVisible"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.splash.SplashActivity"

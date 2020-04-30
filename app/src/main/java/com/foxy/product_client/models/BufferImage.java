@@ -1,18 +1,19 @@
 
 package com.foxy.product_client.models;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.ArrayList;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BufferImage {
+public class BufferImage implements Serializable {
 
     @SerializedName("type")
     @Expose
     private String type;
     @SerializedName("data")
     @Expose
-    private List<Integer> data = null;
+    private ArrayList<Integer> data = null;
 
     public String getType() {
         return type;
@@ -22,11 +23,11 @@ public class BufferImage {
         this.type = type;
     }
 
-    public List<Integer> getData() {
+    public ArrayList<Integer> getData() {
         return data;
     }
 
-    public void setData(List<Integer> data) {
+    public void setData(ArrayList<Integer> data) {
         this.data = data;
     }
 

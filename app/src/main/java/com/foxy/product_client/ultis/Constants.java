@@ -15,8 +15,7 @@ public class Constants {
     public static final String DB_NAME = "product_client";
 
     //Retrofit
-    //public static final String BASE_URL = "http://192.168.0.103:3000/";
-    public static final String BASE_URL = "http://192.168.11.108:3000/";
+    public static final String BASE_URL = "http://192.168.0.103:3000/";
 
     //Api Option
     public static final long READ_TIMEOUT = 60;

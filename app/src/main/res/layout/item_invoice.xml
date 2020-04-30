@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="6dp"
+    app:cardMaxElevation="12dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvName"
+            android:padding="8dp"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:textStyle="italic|bold"/>
+
+        <com.faraaf.tictacdev.valueselector.ValueSelector
+            android:id="@+id/vsQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:borderColor="#5C96CE"
+            app:borderRadius="10"
+            app:borderThickness="2"
+            app:gapValue="1"
+            app:invertIconsPlace="False"
+            app:maxValue="99"
+            app:minValue="0"
+            app:minusBtnColor="#1E88E5"
+            app:minusIconHeightSize="20dp"
+            app:minusIconWidthSize="20dp"
+            app:plusBtnColor="#D81B60"
+            app:plusIconHeightSize="20dp"
+            app:plusIconWidthSize="20dp"
+            app:startValue="1"
+            app:updateInterval="100"
+            app:valueColor="#FB8C00"
+            app:valueSelectorOrientation="horizontal"
+            app:valueTextSize="8sp"
+            app:valueSelectorFontFamily="monospace"
+            app:customFontFamily="rubik.ttf"
+            app:iconTypes="plus_minus"
+            app:actionDownColor="#0CAA0C"
+            android:layout_gravity="right"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"/>
+
+    </LinearLayout>
+    <!--Change iconTypes to plus_minus, arrow, expand, circle-->
+
+</androidx.cardview.widget.CardView>
+
